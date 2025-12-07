@@ -1,0 +1,16 @@
+{
+  "expenses": [
+    {
+      "category": "food",
+      "amount": 5000.0,
+      "description": ""
+    },
+    {
+      "category": "food",
+      "amount": 0.005,
+      "description": ""
+    }
+  ],
+  "monthly_budget": 10000.0,
+  "goals": []
+}
