@@ -68,31 +68,42 @@ if expenses:
     df['date'] = pd.to_datetime(df['date'])
     df['day'] = df['date'].dt.day  # For daily bar chart
 
-    # Pie Chart: Category-wise
-    st.subheader("🥧 Category-wise Spending")
-    category_sums = df.groupby("category")["amount"].sum()
-    if not category_sums.empty:
-        fig1, ax1 = plt.subplots()
-        ax1.pie(category_sums.values, labels=category_sums.index, autopct='%1.1f%%', startangle=90)
-        ax1.axis('equal')
-        ax1.set_title("Expense Distribution by Category")
-        st.pyplot(fig1)
-    else:
-        st.warning("No data for pie chart.")
+    
+    
+    # Pie Chart + Bar Chart Side by Side
+    st.subheader("📊 Monthly Insights")
 
-    # Bar Chart: Daily Expenses
-    st.subheader("📈 Daily Expenses Trend")
-    daily_sums = df.groupby("day")["amount"].sum()
-    if not daily_sums.empty:
-        fig2, ax2 = plt.subplots()
-        daily_sums.plot(kind='bar', ax=ax2, color='skyblue')
-        ax2.set_xlabel("Day of Month")
-        ax2.set_ylabel("Amount (₹)")
-        ax2.set_title("Daily Spending")
-        plt.xticks(rotation=45)
-        st.pyplot(fig2)
-    else:
-        st.warning("No data for bar chart.")
+    col1, col2 = st.columns(2)
+    FIG_SIZE1 = (7, 5)
+    FIG_SIZE2 = (7, 5)
+
+    # --- PIE CHART ---
+    with col1:
+        st.markdown("#### 🥧 Category-wise Spending")
+        category_sums = df.groupby("category")["amount"].sum()
+        if not category_sums.empty:
+            fig1, ax1 = plt.subplots(figsize=FIG_SIZE1)
+            ax1.pie(category_sums.values, labels=category_sums.index, autopct='%1.1f%%', startangle=90)
+            ax1.axis('equal')
+            ax1.set_title("Expense Distribution")
+            st.pyplot(fig1)
+        else:
+            st.warning("No data for pie chart.")
+
+    # --- BAR CHART ---
+    with col2:
+        st.markdown("#### 📈 Daily Expenses Trend")
+        daily_sums = df.groupby("day")["amount"].sum()
+        if not daily_sums.empty:
+            fig2, ax2 = plt.subplots(figsize=FIG_SIZE2)
+            daily_sums.plot(kind='bar', ax=ax2, color='skyblue')
+            ax2.set_xlabel("Day")
+            ax2.set_ylabel("Amount (₹)")
+            ax2.set_title("Daily Spending")
+            plt.xticks(rotation=45)
+            st.pyplot(fig2)
+        else:
+            st.warning("No data for bar chart.")
 
     # Quick Insight
     avg_spend = df["amount"].mean()
