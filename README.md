@@ -1,29 +1,28 @@
-# Personal Expense Tracker
+# Savings System & Goal Tracker
 
-A modern, engaging personal expense tracker built with Streamlit and Python. Visualizes spending patterns and promotes financial literacy with a user-friendly interface. Log, track, and chart monthly spending to improve financial awareness and savings.
+A Streamlit-based personal finance management application to track expenses, set budgets, and monitor savings goals.
 
 ## Features
 
-🎯 Budget management & tracking
-📊 Track expenses by category & date
-🎯 Savings goals with progress tracking
-📈 Visual charts & analytics
-📥 CSV export functionality
-💡 Daily motivational quotes
+✨ **Core Features:**
+- 💰 Set and manage monthly budget
+- 📊 Track expenses by category
+- 🎯 Create and monitor savings goals
+- 📈 Real-time savings calculation
+- ⚙️ Settings and data management
 
 ## Project Structure
 
 ```
 miniproject/
-├── app.py                 # Main Streamlit Dashboard
+├── app.py                 # Main Streamlit app (Dashboard)
 ├── utils.py               # Utility functions (load/save data)
 ├── requirements.txt       # Python dependencies
 ├── data/
 │   └── data.json          # Data storage (expenses, budget, goals)
 ├── pages/
-│   ├── 1_expenses.py      # Add expense details with date picker & charts
-│   ├── 2_budget.py        # Budget and savings goal tracker
-│   └── 3_history.py       # Expense history with filters & CSV export
+│   ├── 1_expenses.py      # Expense management page
+│   └── 2_settings.py      # Settings and statistics page
 └── README.md              # This file
 ```
 
@@ -41,32 +40,22 @@ miniproject/
 
 ## How to Use
 
-**💸 Dashboard** 
-◦ View summary, budget, savings & motivational quotes
-◦ Real-time feedback on spending status
-◦ Check if on track or over budget
+### Dashboard (Main Page)
+- Set your monthly budget
+- View total expenses and current savings
+- Create and track savings goals
+- Monitor goal progress with visual indicators
 
-**➕ Page 1: Add Expenses** 
-◦ Log expenses with date picker (past dates only)
-◦ Select from 5 categories: Food, Travel, Personal, Health, Others
-◦ Add descriptions for context
-◦ View recent expenses preview
-◦ Matplotlib charts for visual analysis
-◦ Category breakdown visualization
+### Expenses Page
+- Add new expenses by category
+- Track all expenses with description
+- View expense summary
+- Delete expenses as needed
 
-**💰 Page 2: Budget & Goals**
-◦ Set monthly budget with easy updates
-◦ Create multiple savings goals
-◦ Track progress with visual indicators
-◦ Delete or modify goals as needed
-◦ Real-time savings calculation
-
-**📜 Page 3: History**
-◦ View all expenses in table format
-◦ Filter by category
-◦ See formatted dates & amounts
-◦ Download as CSV file
-◦ Total filtered expenses summary
+### Settings Page
+- View summary statistics
+- Inspect raw JSON data
+- Reset all data (if needed)
 
 ## Data Format
 
@@ -75,10 +64,9 @@ The `data/data.json` file stores:
 {
   "expenses": [
     {
-      "date": "2025-12-07",
-      "amount": 500.0,
       "category": "Food",
-      "description": "Lunch at restaurant"
+      "amount": 500.0,
+      "description": "Lunch"
     }
   ],
   "monthly_budget": 5000.0,
@@ -93,31 +81,26 @@ The `data/data.json` file stores:
 
 ## Tips
 
-◦ Set realistic budget & track regularly
-◦ Analyze patterns with charts
-◦ Create specific savings goals
-◦ Export CSV for detailed analysis
+💡 **Budget Management:**
+- Set a realistic monthly budget first
+- Regularly add expenses to track spending
+- Create specific, achievable goals
+
+📌 **Goal Tracking:**
+- Set savings goals with clear targets
+- Monitor progress through visual indicators
+- Adjust spending to reach your goals
+
+🎯 **Financial Health:**
+- Review your expenses regularly
+- Aim to save consistently
+- Adjust budget as income changes
 
 ## Requirements
 
 - Python 3.8+
 - Streamlit 1.32.0
 - Pandas 2.1.3
-- Matplotlib (for charts)
-
-## Running the App
-
-**On Windows:**
-```bash
-python -m streamlit run app.py
-```
-
-**Using Python directly:**
-```bash
-streamlit run app.py
-```
-
-The app will open at: `http://localhost:8501`
 
 ## License
 
